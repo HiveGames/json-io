@@ -518,12 +518,12 @@ class JsonParser
 
     Object error(String msg)
     {
-        throw new JsonIoException(getMessage(msg));
+        throw new JsonParseException(getMessage(msg), input.getLine(), input.getCol(), input.getLastSnippet());
     }
 
     Object error(String msg, Exception e)
     {
-        throw new JsonIoException(getMessage(msg), e);
+        throw new JsonParseException(getMessage(msg), e, input.getLine(), input.getCol(), input.getLastSnippet());
     }
 
     String getMessage(String msg)
